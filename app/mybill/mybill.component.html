@@ -1,0 +1,54 @@
+<table border class="table table-striped" style=" font-size:120%;">
+    <tr class=" table-danger">
+        <th>Choose Product</th>
+        <th>product name </th>
+        <th>product price</th>
+
+    </tr>
+
+    <tr class="table-danger">
+
+        <td class=" warning ">
+            <div *ngFor="let p of products ">
+                <a [hidden]="complete " href="# " (click)="setpro( p.name , p.price )"> (choose) </a>
+            </div>
+        </td>
+
+        <td class=" bg-info ">
+            <div *ngFor="let p of products ">
+                {{p.name}}
+            </div>
+        </td>
+
+
+        <td class="bg-danger ">
+            <div *ngFor=" let p of products ">
+                {{ p.price}}
+            </div>
+        </td>
+
+
+    </tr>
+
+</table>
+<p style="font-size:130%;">
+    <br> Name
+    <input type="text " #nametxt [value]="getname() " /> price <input type="text " #pricetxt [value]="getprice() " (keypress)="onlyNumberKey($event) " /> Count <input type="text " #numtxt (keypress)="onlyNumberKey($event) " />
+    <button #addbtn [disabled]="complete " (click)="addNewItem(nametxt.value, pricetxt.value ,numtxt.value) ">Add Item </button>
+    <button (click)="calcu(true) " [disabled]="complete"> Finish /Print </button>
+</p>
+
+<h3 style="text-align:center;">(Details)</h3>
+<ol style="font-size:130%;">
+    <div *ngFor="let item of items ">
+
+        <li>
+            {{ item.toString()}} &nbsp; &nbsp; <a href="# " [hidden]="complete " (click)="editItem(item, countprint.value) "> (Edit Count)</a> <input type="text " value="new count" #countprint /> &nbsp; <a [hidden]="complete " href="# " (click)="removeItem(item) "> ( Remove (X)) </a>            &nbsp; &nbsp;
+
+        </li>
+    </div>
+</ol>
+
+<br>
+<h3 style="text-align:center; ">({{printsum()}})</h3>
+<p style="color:red;" style="text-align:right;">تصميم : م. منال العمر </p>
